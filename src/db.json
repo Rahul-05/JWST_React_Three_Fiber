@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "age": 25
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "age": 30
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "age": 28
+    }
+  ],
+  "products": [
+    {
+      "id": 101,
+      "name": "Product A",
+      "price": 19.99,
+      "stock": 50
+    },
+    {
+      "id": 102,
+      "name": "Product B",
+      "price": 29.99,
+      "stock": 30
+    },
+    {
+      "id": 103,
+      "name": "Product C",
+      "price": 14.99,
+      "stock": 75
+    }
+  ]
+}
