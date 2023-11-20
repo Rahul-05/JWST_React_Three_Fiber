@@ -7,8 +7,8 @@ import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { fadeOnBeforeCompile } from "../utils/fadeMaterial";
 
-export function Cloud({ sceneOpacity, ...props }) {
-  const { nodes, materials } = useGLTF("./models/cloud/moon.glb");
+export function Astroid({ sceneOpacity, ...props }) {
+  const { nodes, materials } = useGLTF("./models/cloud/astroid.glb");
 
   const materialRef = useRef();
 
@@ -19,10 +19,10 @@ export function Cloud({ sceneOpacity, ...props }) {
   return (
     <group {...props} dispose={null}>
       <mesh
-        geometry={nodes.Moon.geometry}
-        material={materials["Mat.001"]}
-        position={[0, -2.617, 0]}
-        scale={0.065}
+        geometry={nodes.Asteroids_Mesh.geometry}
+        material={materials["Asteroids_Mat.001"]}
+        position={[0, -1.441, 0]}
+        scale={0.266}
       >
         <meshStandardMaterial
           ref={materialRef}
@@ -35,4 +35,4 @@ export function Cloud({ sceneOpacity, ...props }) {
   );
 }
 
-useGLTF.preload("./models/cloud/moon.glb");
+useGLTF.preload("./models/cloud/astroid.glb");

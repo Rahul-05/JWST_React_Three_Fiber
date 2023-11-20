@@ -10,6 +10,7 @@ import { fadeOnBeforeCompile } from "../utils/fadeMaterial";
 import { Paperplane } from "./Paperplane";
 import { Background } from "./Background";
 import { Cloud } from "./Cloud";
+import { Astroid } from "./Astroid";
 import { Speed } from "./Speed";
 import { TextSection } from "./TextSection";
 
@@ -88,7 +89,7 @@ We have a wide range of beverages!`,
     ];
   }, []);
 
-  const clouds = useMemo(
+  const astroids = useMemo(
     () => [
       // STARTING
       {
@@ -108,16 +109,9 @@ We have a wide range of beverages!`,
         position: new Vector3(10, -1.2, -52),
       },
       // FIRST POINT
+      
       {
-        scale: new Vector3(4, 4, 4),
-        position: new Vector3(
-          curvePoints[1].x + 10,
-          curvePoints[1].y - 4,
-          curvePoints[1].z + 64
-        ),
-      },
-      {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(6, 6, 6),
         position: new Vector3(
           curvePoints[1].x - 20,
           curvePoints[1].y + 4,
@@ -125,15 +119,7 @@ We have a wide range of beverages!`,
         ),
         rotation: new Euler(0, Math.PI / 7, 0),
       },
-      {
-        rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[1].x - 13,
-          curvePoints[1].y + 4,
-          curvePoints[1].z - 62
-        ),
-      },
+      
       {
         rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
         scale: new Vector3(5, 5, 5),
@@ -153,21 +139,14 @@ We have a wide range of beverages!`,
       },
       // SECOND POINT
       {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(10, 10, 10),
         position: new Vector3(
-          curvePoints[2].x + 6,
+          curvePoints[2].x + 1,
           curvePoints[2].y - 7,
           curvePoints[2].z + 50
         ),
       },
-      {
-        scale: new Vector3(2, 2, 2),
-        position: new Vector3(
-          curvePoints[2].x - 2,
-          curvePoints[2].y + 4,
-          curvePoints[2].z - 26
-        ),
-      },
+      
       {
         scale: new Vector3(4, 4, 4),
         position: new Vector3(
@@ -204,15 +183,7 @@ We have a wide range of beverages!`,
         ),
         rotation: new Euler(Math.PI, 0, Math.PI / 5),
       },
-      {
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[3].x + 0,
-          curvePoints[3].y - 5,
-          curvePoints[3].z - 98
-        ),
-        rotation: new Euler(0, Math.PI / 3, 0),
-      },
+      
       // FOURTH POINT
       {
         scale: new Vector3(2, 2, 2),
@@ -222,15 +193,7 @@ We have a wide range of beverages!`,
           curvePoints[4].z + 2
         ),
       },
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[4].x + 24,
-          curvePoints[4].y - 6,
-          curvePoints[4].z - 42
-        ),
-        rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
-      },
+      
       {
         scale: new Vector3(3, 3, 3),
         position: new Vector3(
@@ -242,14 +205,81 @@ We have a wide range of beverages!`,
       },
       // FINAL
       {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(14, 14, 14),
         position: new Vector3(
-          curvePoints[7].x + 12,
-          curvePoints[7].y - 5,
+          curvePoints[7].x + 2,
+          curvePoints[7].y - 15,
           curvePoints[7].z + 60
         ),
         rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
       },
+      
+    ],
+    []
+  );
+
+  const clouds = useMemo(
+    () => [
+      // STARTING
+      
+      
+      // FIRST POINT
+      {
+        scale: new Vector3(4, 4, 4),
+        position: new Vector3(
+          curvePoints[1].x + 10,
+          curvePoints[1].y - 4,
+          curvePoints[1].z + 64
+        ),
+      },
+      
+      {
+        rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
+        scale: new Vector3(5, 5, 5),
+        position: new Vector3(
+          curvePoints[1].x - 13,
+          curvePoints[1].y + 4,
+          curvePoints[1].z - 62
+        ),
+      },
+      
+      
+      // SECOND POINT
+      
+      {
+        scale: new Vector3(2, 2, 2),
+        position: new Vector3(
+          curvePoints[2].x - 2,
+          curvePoints[2].y + 4,
+          curvePoints[2].z - 26
+        ),
+      },
+      
+      // THIRD POINT
+      
+      {
+        scale: new Vector3(5, 5, 5),
+        position: new Vector3(
+          curvePoints[3].x + 0,
+          curvePoints[3].y - 5,
+          curvePoints[3].z - 98
+        ),
+        rotation: new Euler(0, Math.PI / 3, 0),
+      },
+      // FOURTH POINT
+      
+      {
+        scale: new Vector3(10, 10, 10),
+        position: new Vector3(
+          curvePoints[4].x + 24,
+          curvePoints[4].y - 6,
+          curvePoints[4].z - 42
+        ),
+        rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
+      },
+      
+      // FINAL
+      
       {
         scale: new Vector3(3, 3, 3),
         position: new Vector3(
@@ -522,7 +552,7 @@ We have a wide range of beverages!`,
               /> */}
               <Paperplane
                 rotation-y={Math.PI / 2}
-                scale={[1,1,1]}
+                scale={[1, 1, 1]}
                 position-y={0.1}
               />
             </Float>
@@ -559,6 +589,10 @@ We have a wide range of beverages!`,
         {/* CLOUDS */}
         {clouds.map((cloud, index) => (
           <Cloud sceneOpacity={sceneOpacity} {...cloud} key={index} />
+        ))}
+        {/* astroids */}
+        {astroids.map((astroid, index) => (
+          <Astroid sceneOpacity={sceneOpacity} {...astroid} key={index} />
         ))}
       </>
     ),
