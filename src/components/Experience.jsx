@@ -15,7 +15,7 @@ import { Speed } from "./Speed";
 import { TextSection } from "./TextSection";
 
 const LINE_NB_POINTS = 1000;
-const CURVE_DISTANCE = 250;
+const CURVE_DISTANCE = 150;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
@@ -32,6 +32,10 @@ export const Experience = () => {
       new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -8 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -9 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -10 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -11 * CURVE_DISTANCE),
     ],
     []
   );
@@ -46,12 +50,14 @@ export const Experience = () => {
   const textSections = useMemo(() => {
     return [
       {
-        cameraRailDist: -1,
+        cameraRailDist: -2,
         position: new Vector3(
           curvePoints[1].x - 3,
           curvePoints[1].y,
           curvePoints[1].z
         ),
+        image:
+          "https://images.unsplash.com/photo-1683009427598-9c21a169f98f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         subtitle: `Welcome to Wawatmos,
 Have a seat and enjoy the ride!`,
       },
@@ -85,6 +91,66 @@ We have a wide range of beverages!`,
         ),
         title: "Movies",
         subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[5].x - 1,
+          curvePoints[5].y,
+          curvePoints[5].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[6].x - 1,
+          curvePoints[6].y,
+          curvePoints[6].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[7].x - 1,
+          curvePoints[7].y,
+          curvePoints[7].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[8].x - 1,
+          curvePoints[8].y,
+          curvePoints[8].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[9].x - 1,
+          curvePoints[9].y,
+          curvePoints[9].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We :) provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[10].x - 1,
+          curvePoints[10].y,
+          curvePoints[10].z - 12
+        ),
+        title: "Movies",
+        subtitle: `We :) provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
       },
     ];
   }, []);
