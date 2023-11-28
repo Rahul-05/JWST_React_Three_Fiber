@@ -15,7 +15,9 @@ export function Paperplane(opacity, ...props) {
         material={nodes.mesh1111588455.material}
         // position={[0, 2, 4.2]}
         rotation={[0, 1.7, 0.25]}
-      />
+      >
+        <meshStandardMaterial color="white" envMapIntensity={1} />
+      </mesh>
     </group>
   );
 }

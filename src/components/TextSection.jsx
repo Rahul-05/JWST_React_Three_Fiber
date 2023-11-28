@@ -1,34 +1,37 @@
-import { Text } from "@react-three/drei";
-import { Image } from "@react-three/drei";
+import React from "react";
+import { Text, Image } from "@react-three/drei";
 import { fadeOnBeforeCompileFlat } from "../utils/fadeMaterial";
 
-export const TextSection = ({ image, title, subtitle, ...props }) => {
+export const TextSection = ({ imageUrl, title, subtitle, ...props }) => {
+
   return (
     <group {...props}>
-      {!!image && (
+      {!!imageUrl && (
         <Image
-          scale={[2, 1.2, 1]}
-          url="https://images.unsplash.com/photo-1683009427598-9c21a169f98f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          scale={[5, 3.2, 4]}
+          url={imageUrl}
           toneMapped={false}
-          position-y={0.3}
-          transparent
-          opacity={0.5}
+          position-y={1.4}
+          position-x={2.3}
+          position-z={-0.3}
+          opacity={1}
         >
-          {/* {image}
-          <meshStandardMaterial
-            color={"white"}
+          {imageUrl}
+          <imageMaterial
+            transparent
             onBeforeCompile={fadeOnBeforeCompileFlat}
-          /> */}
+          />
         </Image>
+        
       )}
 
       {!!title && (
         <Text
-          color="black"
+          color="white"
           anchorX={"left"}
           anchorY="bottom"
           fontSize={0.52}
-          maxWidth={2.5}
+          maxWidth={3.5}
           lineHeight={1}
           font={"./fonts/DMSerifDisplay-Regular.ttf"}
         >
@@ -41,11 +44,12 @@ export const TextSection = ({ image, title, subtitle, ...props }) => {
       )}
 
       <Text
-        color="black"
+        color="white"
         anchorX={"left"}
         anchorY="top"
-        fontSize={0.2}
-        maxWidth={2.5}
+        fontSize={0.22}
+        maxWidth={4.5}
+        position-y={-0.3}
         font={"./fonts/Inter-Regular.ttf"}
       >
         {subtitle}
@@ -57,3 +61,5 @@ export const TextSection = ({ image, title, subtitle, ...props }) => {
     </group>
   );
 };
+
+// export default TextSection;

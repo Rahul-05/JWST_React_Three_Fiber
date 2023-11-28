@@ -25,7 +25,7 @@ export const Experience = () => {
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0, -CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
       new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
       new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
       new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
@@ -36,6 +36,13 @@ export const Experience = () => {
       new THREE.Vector3(-100, 0, -9 * CURVE_DISTANCE),
       new THREE.Vector3(100, 0, -10 * CURVE_DISTANCE),
       new THREE.Vector3(100, 0, -11 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -12 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -15 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -16 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -17 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -18 * CURVE_DISTANCE),
     ],
     []
   );
@@ -50,16 +57,16 @@ export const Experience = () => {
   const textSections = useMemo(() => {
     return [
       {
-        cameraRailDist: -2,
+        cameraRailDist: -3,
         position: new Vector3(
-          curvePoints[1].x - 3,
-          curvePoints[1].y,
+          curvePoints[1].x - 5,
+          curvePoints[1].y ,
           curvePoints[1].z
         ),
-        image:
-          "https://images.unsplash.com/photo-1683009427598-9c21a169f98f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        subtitle: `Welcome to Wawatmos,
-Have a seat and enjoy the ride!`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/01.webp",
+        title: "Webb First Deep Field",
+        subtitle: `Galaxy cluster SMACS 0723, and it is teeming with thousands of galaxies – including the faintest objects ever observed in the infrared`,
       },
       {
         cameraRailDist: 1.5,
@@ -68,19 +75,22 @@ Have a seat and enjoy the ride!`,
           curvePoints[2].y,
           curvePoints[2].z
         ),
-        title: "Services",
-        subtitle: `Do you want a drink?
-We have a wide range of beverages!`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/02.jpg",
+        title: "The Pillars of Creation",
+        subtitle: `A small region within the vast Eagle Nebula, which lies 6,500 light-years away. Newly formed stars are the scene-stealers in this image`,
       },
       {
-        cameraRailDist: -1,
+        cameraRailDist: -3,
         position: new Vector3(
-          curvePoints[3].x - 3,
+          curvePoints[3].x - 5,
           curvePoints[3].y,
           curvePoints[3].z
         ),
-        title: "Fear of flying?",
-        subtitle: `Our flight attendants will help you have a great journey`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/03.webp",
+        title: "Pandoras's Cluster",
+        subtitle: `A small region within the vast Eagle Nebula, which lies 6,500 light-years away. Newly formed stars are the scene-stealers in this image`,
       },
       {
         cameraRailDist: 1.5,
@@ -89,8 +99,10 @@ We have a wide range of beverages!`,
           curvePoints[4].y,
           curvePoints[4].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/04.png",
+        title: "Cosmic Cliffs",
+        subtitle: `Galaxy cluster SMACS 0723. Rare peek into stars in their earliest, rapid stages of formation. For an individual star, this period only lasts about 50,000 to 100,000 years.`,
       },
       {
         cameraRailDist: 1.5,
@@ -99,58 +111,155 @@ We have a wide range of beverages!`,
           curvePoints[5].y,
           curvePoints[5].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/05.png",
+        title: "Seyfert galaxy",
+        subtitle: `19 galaxies targeted for study by the Physics at High Angular resolution in Nearby Galaxies (PHANGS) collaboration. Nearby barred spiral galaxy NGC 1433`,
       },
       {
         cameraRailDist: 1.5,
         position: new Vector3(
-          curvePoints[6].x - 1,
+          curvePoints[6].x + 1,
           curvePoints[6].y,
           curvePoints[6].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/06.webp",
+        title: "Earendel",
+        subtitle: `The most distant single star ever found`,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: -3,
         position: new Vector3(
           curvePoints[7].x - 1,
           curvePoints[7].y,
           curvePoints[7].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/07.jpg",
+        title: "Stephan's Quintet",
+        subtitle: `A visual grouping of five galaxies, is best known for being prominently featured in the holiday classic film, “Its a Wonderful Life.`,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: 2,
         position: new Vector3(
-          curvePoints[8].x - 1,
+          curvePoints[8].x - 5,
           curvePoints[8].y,
           curvePoints[8].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/08.png",
+        title: "Southern Ring Nebula",
+        subtitle: `The bright star at the center of NGC 3132. A second star, barely visible at lower left along one of the bright stars diffraction spikes, is the nebulas source.`,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: -2.5,
         position: new Vector3(
           curvePoints[9].x - 1,
           curvePoints[9].y,
           curvePoints[9].z - 12
         ),
-        title: "Movies",
-        subtitle: `We :) provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/09.webp",
+        title: "A Cosmic Tarantula",
+        subtitle: `Image stretching 340 light-years across, displays the star-forming region in a new light,`,
       },
+      
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: -2.5,
         position: new Vector3(
           curvePoints[10].x - 1,
           curvePoints[10].y,
           curvePoints[10].z - 12
         ),
-        title: "Movies",
-        subtitle: `We :) provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/10.jpg",
+        title: "Cosmic Seahorse",
+        subtitle: `A galaxy cluster in the foreground has magnified distant galaxies. gravitational lensing, occurs when a massive celestial object such as a galaxy cluster causes a sufficient curvature of spacetime for light to be visibly bent around it`,
+      },
+      {
+        cameraRailDist: 2.5,
+        position: new Vector3(
+          curvePoints[11].x - 1,
+          curvePoints[11].y,
+          curvePoints[11].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/11.webp",
+        title: "Cartwheel Galaxy",
+        subtitle: `Located about 500 million light-years away in the Sculptor constellation, is a rare sight. Its appearance, much like that of the wheel of a wagon, is the result of an intense event`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[12].x - 1,
+          curvePoints[12].y,
+          curvePoints[12].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/12.webp",
+        title: "A Wolf Rayet Star ",
+        subtitle: `Massive stars race through their lifecycles, and only some of them go through a brief Wolf-Rayet phase before going supernova`,
+      },
+      {
+        cameraRailDist: -1.5,
+        position: new Vector3(
+          curvePoints[13].x - 5,
+          curvePoints[13].y,
+          curvePoints[13].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/13.webp",
+        title: "Orion Nebula",
+        subtitle: `Believed to be the cosmic fire of creation by the Maya of Mesoamerica, M42 blazes brightly in the constellation Orion`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[14].x - 1,
+          curvePoints[14].y,
+          curvePoints[14].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/14.jpg",
+        title: "Galactic Get-Together",
+        subtitle: `II ZW 96 is roughly 500 million light-years from Earth and lies in the constellation Delphinus, close to the celestial equator. As well as the wild swirl of the merging galaxies, a menagerie of background galaxies are dotted throughout the image.`,
+      },
+      {
+        cameraRailDist: -1.5,
+        position: new Vector3(
+          curvePoints[15].x - 1,
+          curvePoints[15].y,
+          curvePoints[15].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/15.jpg",
+        title: "GOODS-S field",
+        subtitle: `Portion of an area of the sky known as GOODS-South, which has been well studied by the Hubble Space Telescope and other observatories. More than 45,000 galaxies are visible here.`,
+      },
+      {
+        cameraRailDist: -1.5,
+        position: new Vector3(
+          curvePoints[16].x - 1,
+          curvePoints[16].y,
+          curvePoints[16].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/16.webp",
+        title: "Chameleon I",
+        subtitle: `An in-depth inventory of the deepest, coldest ices measured to date in a molecular cloud. In addition to simple ices like water, the team was able to identify frozen forms of a wide range of molecules`,
+      },
+      {
+        cameraRailDist: 2.5,
+        position: new Vector3(
+          curvePoints[17].x - 1,
+          curvePoints[17].y,
+          curvePoints[17].z - 12
+        ),
+        imageUrl:
+          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/17.png",
+        title: "protostar",
+        subtitle: `The protostar itself is hidden from view within the “neck” of this hourglass shape. An edge-on protoplanetary disk is seen as a dark line across the middle of the neck.`,
       },
     ];
   }, []);
@@ -190,7 +299,7 @@ We have a wide range of beverages!`,
         rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
         scale: new Vector3(5, 5, 5),
         position: new Vector3(
-          curvePoints[1].x + 54,
+          curvePoints[1].x + 60,
           curvePoints[1].y + 2,
           curvePoints[1].z - 82
         ),
@@ -207,7 +316,7 @@ We have a wide range of beverages!`,
       {
         scale: new Vector3(10, 10, 10),
         position: new Vector3(
-          curvePoints[2].x + 1,
+          curvePoints[2].x -8,
           curvePoints[2].y - 7,
           curvePoints[2].z + 50
         ),
@@ -538,8 +647,8 @@ We have a wide range of beverages!`,
 
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: "#6f35cc",
-      colorB: "#ffad30",
+      colorA: "#274471",
+      colorB: "#93614a",
     });
     tl.current.to(backgroundColors.current, {
       duration: 1,
