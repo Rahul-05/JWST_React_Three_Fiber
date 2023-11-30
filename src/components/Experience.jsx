@@ -60,7 +60,7 @@ export const Experience = () => {
         cameraRailDist: -3,
         position: new Vector3(
           curvePoints[1].x - 5,
-          curvePoints[1].y ,
+          curvePoints[1].y,
           curvePoints[1].z
         ),
         imageUrl:
@@ -90,7 +90,7 @@ export const Experience = () => {
         imageUrl:
           "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/03.webp",
         title: "Pandoras's Cluster",
-        subtitle: `A small region within the vast Eagle Nebula, which lies 6,500 light-years away. Newly formed stars are the scene-stealers in this image`,
+        subtitle: `Never-before-seen details in a region of space known as Pandoras Cluster (Abell 2744)`,
       },
       {
         cameraRailDist: 1.5,
@@ -164,7 +164,7 @@ export const Experience = () => {
         title: "A Cosmic Tarantula",
         subtitle: `Image stretching 340 light-years across, displays the star-forming region in a new light,`,
       },
-      
+
       {
         cameraRailDist: -2.5,
         position: new Vector3(

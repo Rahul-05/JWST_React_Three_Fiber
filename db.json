@@ -1,42 +1,106 @@
 {
-  "users": [
+  "jwst": [
     {
       "id": 1,
-      "name": "John Doe",
-      "email": "john.doe@example.com",
-      "age": 25
+      "imageUrl": "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/01.webp",
+      "title": "Webb First Deep Field",
+      "subtitle": "Galaxy cluster SMACS 0723, and it is teeming with thousands of galaxies including the faintest objects ever observed in the infrared"
     },
     {
       "id": 2,
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com",
-      "age": 30
+      "imageUrl": "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/02.jpg",
+      "title": "The Pillars of Creation",
+      "subtitle": "A small region within the vast Eagle Nebula, which lies 6,500 light-years away. Newly formed stars are the scene-stealers in this image"
     },
     {
       "id": 3,
-      "name": "Bob Johnson",
-      "email": "bob.johnson@example.com",
-      "age": 28
-    }
-  ],
-  "products": [
-    {
-      "id": 101,
-      "name": "Product A",
-      "price": 19.99,
-      "stock": 50
+      "imageUrl": "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/03.webp",
+      "title": "Pandoras's Cluster",
+      "subtitle": "Never-before-seen details in a region of space known as Pandoras Cluster (Abell 2744)"
     },
     {
-      "id": 102,
-      "name": "Product B",
-      "price": 29.99,
-      "stock": 30
+      "id": 4,
+      "imageUrl": "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/04.png",
+      "title": "Cosmic Cliffs",
+      "subtitle": "Galaxy cluster SMACS 0723. Rare peek into stars in their earliest, rapid stages of formation. For an individual star, this period only lasts about 50,000 to 100,000 years."
     },
     {
-      "id": 103,
-      "name": "Product C",
-      "price": 14.99,
-      "stock": 75
-    }
+      "id": 5,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/05.png",
+      "title": "Seyfert galaxy",
+      "subtitle": "19 galaxies targeted for study by the Physics at High Angular resolution in Nearby Galaxies (PHANGS) collaboration. Nearby barred spiral galaxy NGC 1433"
+      },
+    {
+      "id": 6,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/06.webp",
+      "title": "Earendel",
+      "subtitle": "The most distant single star ever found"
+      },
+    {
+      "id": 7,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/07.jpg",
+      "title": "Stephan's Quintet",
+      "subtitle": "A visual grouping of five galaxies, is best known for being prominently featured in the holiday classic film, “Its a Wonderful Life."
+      },
+    {
+      "id": 8,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/08.png",
+      "title": "Southern Ring Nebula",
+      "subtitle": "The bright star at the center of NGC 3132. A second star, barely visible at lower left along one of the bright stars diffraction spikes, is the nebulas source."
+      },
+    {
+      "id": 9,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/09.webp",
+      "title": "A Cosmic Tarantula",
+      "subtitle": "Image stretching 340 light-years across, displays the star-forming region in a new light,"
+      },
+    {
+      "id": 10,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/10.jpg",
+      "title": "Cosmic Seahorse",
+      "subtitle": "A galaxy cluster in the foreground has magnified distant galaxies. gravitational lensing, occurs when a massive celestial object such as a galaxy cluster causes a sufficient curvature of spacetime for light to be visibly bent around it"
+      },
+    {
+      "id": 11,
+     "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/11.webp",
+      "title": "Cartwheel Galaxy",
+      "subtitle": "Located about 500 million light-years away in the Sculptor constellation, is a rare sight. Its appearance, much like that of the wheel of a wagon, is the result of an intense event"
+      },
+    {
+      "id": 12,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/12.webp",
+      "title": "A Wolf Rayet Star ",
+      "subtitle": "Massive stars race through their lifecycles, and only some of them go through a brief Wolf-Rayet phase before going supernova"
+      },
+    {
+      "id": 13,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/13.webp",
+      "title": "Orion Nebula",
+      "subtitle": "Believed to be the cosmic fire of creation by the Maya of Mesoamerica, M42 blazes brightly in the constellation Orion"
+      },
+    {
+      "id": 14,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/14.jpg",
+      "title": "Galactic Get-Together",
+      "subtitle": "II ZW 96 is roughly 500 million light-years from Earth and lies in the constellation Delphinus, close to the celestial equator. As well as the wild swirl of the merging galaxies, a menagerie of background galaxies are dotted throughout the image."
+      },
+    {
+      "id": 15,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/15.jpg",
+      "title": "GOODS-S field",
+      "subtitle": "Portion of an area of the sky known as GOODS-South, which has been well studied by the Hubble Space Telescope and other observatories. More than 45,000 galaxies are visible here."
+      },
+    {
+      "id": 16,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/16.webp",
+      "title": "Chameleon I",
+      "subtitle": "An in-depth inventory of the deepest, coldest ices measured to date in a molecular cloud. In addition to simple ices like water, the team was able to identify frozen forms of a wide range of molecules"
+      },
+    {
+      "id": 17,
+      "imageUrl":"https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/17.png",
+      "title": "protostar",
+      "subtitle": "The protostar itself is hidden from view within the “neck” of this hourglass shape. An edge-on protoplanetary disk is seen as a dark line across the middle of the neck."
+      }
   ]
 }
