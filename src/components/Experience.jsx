@@ -1,7 +1,7 @@
-import { Float, PerspectiveCamera, useScroll } from "@react-three/drei";
+import { Float, OrbitControls, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useState, useLayoutEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Euler, Group, Vector3 } from "three";
 import { usePlay } from "../contexts/Play";
@@ -14,6 +14,7 @@ import { Astroid } from "./Astroid";
 import { Speed } from "./Speed";
 import { TextSection } from "./TextSection";
 
+
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 150;
 const CURVE_AHEAD_CAMERA = 0.008;
@@ -21,7 +22,9 @@ const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = 42;
 
-export const Experience = () => {
+
+export const Experience = ({ data, loading }) => {
+  // const { data, loading, error } = useApiData();
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
@@ -54,7 +57,50 @@ export const Experience = () => {
     return new THREE.CatmullRomCurve3(curvePoints, false, "catmullrom", 0.5);
   }, []);
 
+  // const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchDataAndSetState = async () => {
+  //     try {
+  //       const fetchedData = await fetchData();
+  //       setData(fetchedData);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchDataAndSetState();
+  // }, []);
+
+  // const [data, setData] = useState(null);
+  // const [loading, setLoading] = useState(true);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://rahul-05.github.io/JWST_React_Three_Fiber/db.json"
+  //     );
+  //     const data = await response.json();
+  //     console.table(data.jwst);
+  //     setData(data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  //   finally {
+  //     setLoading(false); // Set loading to false whether the request was successful or not
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   const textSections = useMemo(() => {
+    if (loading || !data || !data.jwst || data.jwst.length === 0) {
+      // Data is still loading, or it's empty, return an empty array
+      return [];
+    }
     return [
       {
         cameraRailDist: -3,
@@ -63,10 +109,9 @@ export const Experience = () => {
           curvePoints[1].y,
           curvePoints[1].z
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/01.webp",
-        title: "Webb First Deep Field",
-        subtitle: `Galaxy cluster SMACS 0723, and it is teeming with thousands of galaxies – including the faintest objects ever observed in the infrared`,
+        imageUrl: data.jwst[0].imageUrl,
+        title: data.jwst[0].title,
+        subtitle: data.jwst[0].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -75,10 +120,9 @@ export const Experience = () => {
           curvePoints[2].y,
           curvePoints[2].z
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/02.jpg",
-        title: "The Pillars of Creation",
-        subtitle: `A small region within the vast Eagle Nebula, which lies 6,500 light-years away. Newly formed stars are the scene-stealers in this image`,
+        imageUrl: data.jwst[1].imageUrl,
+        title: data.jwst[1].title,
+        subtitle: data.jwst[1].subtitle,
       },
       {
         cameraRailDist: -3,
@@ -87,10 +131,9 @@ export const Experience = () => {
           curvePoints[3].y,
           curvePoints[3].z
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/03.webp",
-        title: "Pandoras's Cluster",
-        subtitle: `Never-before-seen details in a region of space known as Pandoras Cluster (Abell 2744)`,
+        imageUrl: data.jwst[2].imageUrl,
+        title: data.jwst[2].title,
+        subtitle: data.jwst[2].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -99,10 +142,9 @@ export const Experience = () => {
           curvePoints[4].y,
           curvePoints[4].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/04.png",
-        title: "Cosmic Cliffs",
-        subtitle: `Galaxy cluster SMACS 0723. Rare peek into stars in their earliest, rapid stages of formation. For an individual star, this period only lasts about 50,000 to 100,000 years.`,
+        imageUrl: data.jwst[3].imageUrl,
+        title: data.jwst[3].title,
+        subtitle: data.jwst[3].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -111,10 +153,9 @@ export const Experience = () => {
           curvePoints[5].y,
           curvePoints[5].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/05.png",
-        title: "Seyfert galaxy",
-        subtitle: `19 galaxies targeted for study by the Physics at High Angular resolution in Nearby Galaxies (PHANGS) collaboration. Nearby barred spiral galaxy NGC 1433`,
+        imageUrl: data.jwst[4].imageUrl,
+        title: data.jwst[4].title,
+        subtitle: data.jwst[4].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -123,10 +164,9 @@ export const Experience = () => {
           curvePoints[6].y,
           curvePoints[6].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/06.webp",
-        title: "Earendel",
-        subtitle: `The most distant single star ever found`,
+        imageUrl: data.jwst[5].imageUrl,
+        title: data.jwst[5].title,
+        subtitle: data.jwst[5].subtitle,
       },
       {
         cameraRailDist: -3,
@@ -135,10 +175,9 @@ export const Experience = () => {
           curvePoints[7].y,
           curvePoints[7].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/07.jpg",
-        title: "Stephan's Quintet",
-        subtitle: `A visual grouping of five galaxies, is best known for being prominently featured in the holiday classic film, “Its a Wonderful Life.`,
+        imageUrl: data.jwst[6].imageUrl,
+        title: data.jwst[6].title,
+        subtitle: data.jwst[6].subtitle,
       },
       {
         cameraRailDist: 2,
@@ -147,10 +186,9 @@ export const Experience = () => {
           curvePoints[8].y,
           curvePoints[8].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/08.png",
-        title: "Southern Ring Nebula",
-        subtitle: `The bright star at the center of NGC 3132. A second star, barely visible at lower left along one of the bright stars diffraction spikes, is the nebulas source.`,
+        imageUrl: data.jwst[7].imageUrl,
+        title: data.jwst[7].title,
+        subtitle: data.jwst[7].subtitle,
       },
       {
         cameraRailDist: -2.5,
@@ -159,10 +197,9 @@ export const Experience = () => {
           curvePoints[9].y,
           curvePoints[9].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/09.webp",
-        title: "A Cosmic Tarantula",
-        subtitle: `Image stretching 340 light-years across, displays the star-forming region in a new light,`,
+        imageUrl: data.jwst[8].imageUrl,
+        title: data.jwst[8].title,
+        subtitle: data.jwst[8].subtitle,
       },
 
       {
@@ -172,10 +209,9 @@ export const Experience = () => {
           curvePoints[10].y,
           curvePoints[10].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/10.jpg",
-        title: "Cosmic Seahorse",
-        subtitle: `A galaxy cluster in the foreground has magnified distant galaxies. gravitational lensing, occurs when a massive celestial object such as a galaxy cluster causes a sufficient curvature of spacetime for light to be visibly bent around it`,
+        imageUrl: data.jwst[9].imageUrl,
+        title: data.jwst[9].title,
+        subtitle: data.jwst[9].subtitle,
       },
       {
         cameraRailDist: 2.5,
@@ -184,10 +220,9 @@ export const Experience = () => {
           curvePoints[11].y,
           curvePoints[11].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/11.webp",
-        title: "Cartwheel Galaxy",
-        subtitle: `Located about 500 million light-years away in the Sculptor constellation, is a rare sight. Its appearance, much like that of the wheel of a wagon, is the result of an intense event`,
+        imageUrl: data.jwst[10].imageUrl,
+        title: data.jwst[10].title,
+        subtitle: data.jwst[10].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -196,10 +231,9 @@ export const Experience = () => {
           curvePoints[12].y,
           curvePoints[12].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/12.webp",
-        title: "A Wolf Rayet Star ",
-        subtitle: `Massive stars race through their lifecycles, and only some of them go through a brief Wolf-Rayet phase before going supernova`,
+        imageUrl: data.jwst[11].imageUrl,
+        title: data.jwst[11].title,
+        subtitle: data.jwst[11].subtitle,
       },
       {
         cameraRailDist: -1.5,
@@ -208,10 +242,9 @@ export const Experience = () => {
           curvePoints[13].y,
           curvePoints[13].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/13.webp",
-        title: "Orion Nebula",
-        subtitle: `Believed to be the cosmic fire of creation by the Maya of Mesoamerica, M42 blazes brightly in the constellation Orion`,
+        imageUrl: data.jwst[12].imageUrl,
+        title: data.jwst[12].title,
+        subtitle: data.jwst[12].subtitle,
       },
       {
         cameraRailDist: 1.5,
@@ -220,10 +253,9 @@ export const Experience = () => {
           curvePoints[14].y,
           curvePoints[14].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/14.jpg",
-        title: "Galactic Get-Together",
-        subtitle: `II ZW 96 is roughly 500 million light-years from Earth and lies in the constellation Delphinus, close to the celestial equator. As well as the wild swirl of the merging galaxies, a menagerie of background galaxies are dotted throughout the image.`,
+        imageUrl: data.jwst[13].imageUrl,
+        title: data.jwst[13].title,
+        subtitle: data.jwst[13].subtitle,
       },
       {
         cameraRailDist: -1.5,
@@ -232,10 +264,9 @@ export const Experience = () => {
           curvePoints[15].y,
           curvePoints[15].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/15.jpg",
-        title: "GOODS-S field",
-        subtitle: `Portion of an area of the sky known as GOODS-South, which has been well studied by the Hubble Space Telescope and other observatories. More than 45,000 galaxies are visible here.`,
+        imageUrl: data.jwst[14].imageUrl,
+        title: data.jwst[14].title,
+        subtitle: data.jwst[14].subtitle,
       },
       {
         cameraRailDist: -1.5,
@@ -244,10 +275,9 @@ export const Experience = () => {
           curvePoints[16].y,
           curvePoints[16].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/16.webp",
-        title: "Chameleon I",
-        subtitle: `An in-depth inventory of the deepest, coldest ices measured to date in a molecular cloud. In addition to simple ices like water, the team was able to identify frozen forms of a wide range of molecules`,
+        imageUrl: data.jwst[15].imageUrl,
+        title: data.jwst[15].title,
+        subtitle: data.jwst[15].subtitle,
       },
       {
         cameraRailDist: 2.5,
@@ -256,19 +286,17 @@ export const Experience = () => {
           curvePoints[17].y,
           curvePoints[17].z - 12
         ),
-        imageUrl:
-          "https://raw.githubusercontent.com/Rahul-05/JWST_React_Three_Fiber/master/public/images/17.png",
-        title: "protostar",
-        subtitle: `The protostar itself is hidden from view within the “neck” of this hourglass shape. An edge-on protoplanetary disk is seen as a dark line across the middle of the neck.`,
+        imageUrl: data.jwst[16].imageUrl,
+        title: data.jwst[16].title,
+        subtitle: data.jwst[16].subtitle,
       },
     ];
-  }, []);
+  }, [data]);
 
   const astroids = useMemo(
     () => [
       // STARTING
       {
-        
         position: new Vector3(-3.5, -3.2, -7),
       },
       {
@@ -284,7 +312,7 @@ export const Experience = () => {
         position: new Vector3(10, -1.2, -52),
       },
       // FIRST POINT
-      
+
       {
         scale: new Vector3(6, 6, 6),
         position: new Vector3(
@@ -294,7 +322,7 @@ export const Experience = () => {
         ),
         rotation: new Euler(0, Math.PI / 7, 0),
       },
-      
+
       {
         rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
         scale: new Vector3(5, 5, 5),
@@ -307,7 +335,7 @@ export const Experience = () => {
       {
         scale: new Vector3(5, 5, 5),
         position: new Vector3(
-          curvePoints[1].x + 8,
+          curvePoints[1].x + 18,
           curvePoints[1].y - 14,
           curvePoints[1].z - 22
         ),
@@ -316,12 +344,12 @@ export const Experience = () => {
       {
         scale: new Vector3(10, 10, 10),
         position: new Vector3(
-          curvePoints[2].x -8,
+          curvePoints[2].x - 8,
           curvePoints[2].y - 7,
           curvePoints[2].z + 50
         ),
       },
-      
+
       {
         scale: new Vector3(4, 4, 4),
         position: new Vector3(
@@ -358,7 +386,7 @@ export const Experience = () => {
         ),
         rotation: new Euler(Math.PI, 0, Math.PI / 5),
       },
-      
+
       // FOURTH POINT
       {
         scale: new Vector3(2, 2, 2),
@@ -368,7 +396,7 @@ export const Experience = () => {
           curvePoints[4].z + 2
         ),
       },
-      
+
       {
         scale: new Vector3(3, 3, 3),
         position: new Vector3(
@@ -388,7 +416,123 @@ export const Experience = () => {
         ),
         rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
       },
-      
+      {
+        scale: new Vector3(14, 14, 14),
+        position: new Vector3(
+          curvePoints[8].x - 95,
+          curvePoints[8].y - 15,
+          curvePoints[8].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(14, 14, 14),
+        position: new Vector3(
+          curvePoints[8].x + 2,
+          curvePoints[8].y - 15,
+          curvePoints[8].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(14, 14, 14),
+        position: new Vector3(
+          curvePoints[10].x - 180,
+          curvePoints[10].y - 15,
+          curvePoints[10].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 6, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(14, 14, 14),
+        position: new Vector3(
+          curvePoints[12].x + 27,
+          curvePoints[12].y - 15,
+          curvePoints[12].z + 80
+        ),
+        rotation: new Euler(-Math.PI / 6, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(7, 7, 7),
+        position: new Vector3(
+          curvePoints[12].x + 100,
+          curvePoints[12].y - 27,
+          curvePoints[12].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(7, 7, 7),
+        position: new Vector3(
+          curvePoints[14].x + 10,
+          curvePoints[14].y - 7,
+          curvePoints[14].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(7, 7, 7),
+        position: new Vector3(
+          curvePoints[14].x + 2,
+          curvePoints[14].y - 10,
+          curvePoints[14].z + 160
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(7, 7, 7),
+        position: new Vector3(
+          curvePoints[15].x + 2,
+          curvePoints[15].y - 0,
+          curvePoints[15].z + 50
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(7, 7, 7),
+        position: new Vector3(
+          curvePoints[15].x + 90,
+          curvePoints[15].y - 0,
+          curvePoints[15].z + 140
+        ),
+        rotation: new Euler(-Math.PI / 1, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(20, 20, 20),
+        position: new Vector3(
+          curvePoints[15].x - 20,
+          curvePoints[15].y - 0,
+          curvePoints[15].z - 50
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(20, 20, 20),
+        position: new Vector3(
+          curvePoints[16].x - 20,
+          curvePoints[16].y - 0,
+          curvePoints[16].z - 50
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(15, 15, 15),
+        position: new Vector3(
+          curvePoints[16].x + 70,
+          curvePoints[16].y - 0,
+          curvePoints[16].z - 50
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(20, 20, 20),
+        position: new Vector3(
+          curvePoints[17].x - 20,
+          curvePoints[17].y - 0,
+          curvePoints[17].z - 50
+        ),
+        rotation: new Euler(-Math.PI / 2, -Math.PI / 1, 0),
+      },
     ],
     []
   );
@@ -396,8 +540,7 @@ export const Experience = () => {
   const clouds = useMemo(
     () => [
       // STARTING
-      
-      
+
       // FIRST POINT
       {
         scale: new Vector3(4, 4, 4),
@@ -407,7 +550,7 @@ export const Experience = () => {
           curvePoints[1].z + 64
         ),
       },
-      
+
       {
         rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
         scale: new Vector3(5, 5, 5),
@@ -417,10 +560,9 @@ export const Experience = () => {
           curvePoints[1].z - 62
         ),
       },
-      
-      
+
       // SECOND POINT
-      
+
       {
         scale: new Vector3(2, 2, 2),
         position: new Vector3(
@@ -429,9 +571,9 @@ export const Experience = () => {
           curvePoints[2].z - 26
         ),
       },
-      
+
       // THIRD POINT
-      
+
       {
         scale: new Vector3(5, 5, 5),
         position: new Vector3(
@@ -442,7 +584,7 @@ export const Experience = () => {
         rotation: new Euler(0, Math.PI / 3, 0),
       },
       // FOURTH POINT
-      
+
       {
         scale: new Vector3(10, 10, 10),
         position: new Vector3(
@@ -452,9 +594,9 @@ export const Experience = () => {
         ),
         rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
       },
-      
+
       // FINAL
-      
+
       {
         scale: new Vector3(3, 3, 3),
         position: new Vector3(
@@ -463,6 +605,60 @@ export const Experience = () => {
           curvePoints[7].z + 120
         ),
         rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(220, 14, 14),
+        position: new Vector3(
+          curvePoints[9].x + 125,
+          curvePoints[9].y - 0,
+          curvePoints[9].z + 30
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(220, 14, 14),
+        position: new Vector3(
+          curvePoints[9].x - 45,
+          curvePoints[9].y - 20,
+          curvePoints[9].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(8, 8, 8),
+        position: new Vector3(
+          curvePoints[11].x + 60,
+          curvePoints[11].y + 5,
+          curvePoints[11].z + 120
+        ),
+        rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(3, 3, 3),
+        position: new Vector3(
+          curvePoints[11].x + 10,
+          curvePoints[11].y - 12,
+          curvePoints[11].z + 120
+        ),
+        rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(10, 10, 10),
+        position: new Vector3(
+          curvePoints[15].x + 50,
+          curvePoints[15].y - 10,
+          curvePoints[15].z - 80
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
+      },
+      {
+        scale: new Vector3(15, 15, 15),
+        position: new Vector3(
+          curvePoints[16].x + 70,
+          curvePoints[16].y - 10,
+          curvePoints[16].z - 0
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 1, 0),
       },
     ],
     []
@@ -706,6 +902,7 @@ export const Experience = () => {
   return useMemo(
     () => (
       <>
+        {/* <OrbitControls /> */}
         <directionalLight position={[0, 3, 1]} intensity={0.5} />
         <group ref={cameraGroup}>
           <Speed />
