@@ -15,7 +15,11 @@ export const Overlay = () => {
       {progress === 100 && (
         <div className={`intro ${play ? "intro--disappear" : ""}`}>
           <h1 className="logo">JWST</h1>
-          <p className="intro__scroll">Scroll to begin the journey</p>
+          <h2 className="logo_sub">James Webb Space Telescope</h2>
+          <p className="intro__scroll">
+            Scroll to embark on a journey into the discoveries
+            <br /> made by the James Webb Space Telescope over the years.
+          </p>
           <button
             className="explore"
             onClick={() => {
@@ -27,7 +31,7 @@ export const Overlay = () => {
         </div>
       )}
       <div className={`outro ${end ? "outro--appear" : ""}`}>
-        <p className="outro__text">Wish you had a great journey with us...</p>
+        <p className="outro__text">Hope you had a great journey with us...</p>
       </div>
     </div>
   );

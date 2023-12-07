@@ -67,10 +67,30 @@ body {
   margin: 0;
   transform: translateY(-50%);
   position: absolute;
-  top: 50vh;
+  top: 40vh;
   animation: fadeUp 2.4s ease-in-out;
   transition: all 2s ease-in-out;
   text-align: center;
+}
+
+.logo_sub {
+  font-family: "Inter", sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight: 100;
+  letter-spacing: 0.2rem;
+  padding: 0;
+  margin: 0;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 55vh;
+  animation: fadeUp 2.4s ease-in-out;
+  transition: all 2s ease-in-out;
+  text-align: center;
+}
+
+.intro--disappear .logo_sub {
+  animation: fadeOut 1s ease-in-out forwards;
 }
 
 span{
@@ -100,7 +120,8 @@ span{
   font-size: 1rem;
   letter-spacing: 0.05rem;
   position: absolute;
-  top: 24vh;
+  top: 15vh;
+  text-align: center;
 }
 
 .intro--disappear .intro__scroll {
@@ -121,7 +142,7 @@ span{
   border-radius: 32px;
   cursor: pointer;
   display: inline-block;
-  margin-top: 320px;
+  margin-top: 250px;
   display: inline-block;
   position: relative;
   z-index: 1;
@@ -178,7 +199,7 @@ span{
 .outro__text {
   font-family: "Inter", sans-serif;
   font-size: 1.5rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 /* RESPONSIVE */
